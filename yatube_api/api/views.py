@@ -11,7 +11,7 @@ from .serializers import (
     CommentSerializer, GroupSerializer,
     PostSerializer, FollowSerializer
 )
-from ..posts.models import Follow, Group, Post, User
+from posts.models import Follow, Group, Post, User
 
 
 class PostViewSet(viewsets.ModelViewSet):
