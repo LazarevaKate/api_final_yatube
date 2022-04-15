@@ -1,5 +1,9 @@
+import routers as routers
 from django.urls import include, path
-from rest_framework import routers
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 from .views import PostViewSet, CommentViewSet, GroupViewSet, FollowViewSet
 
@@ -14,5 +18,6 @@ router.register('follow', FollowViewSet, basename='follow')
 
 urlpatterns = [
     path('v1/', include(router.urls)),
-    path('v1/', include('djoser.urls.jwt')),
+    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
